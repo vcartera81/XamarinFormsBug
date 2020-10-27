@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sampleCell="clr-namespace:XamarinFormsBug.Controls.SampleCell;assembly=XamarinFormsBug"
+             x:Class="XamarinFormsBug.MainPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" 
+                     Orientation="Vertical">
+            <CollectionView ItemsSource="{Binding Groups}" 
+                            IsGrouped="True"
+                            VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <sampleCell:SampleCell InputCell="{Binding}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="FillAndExpand"
+                                     Padding="5,0,5,3"
+                                     Margin="0,0,0,5"
+                                     BackgroundColor="#E3E3E3">
+                            <Label FontSize="12"
+                                   VerticalOptions="Center"
+                                   TextColor="#767676"
+                                   Text="{Binding Date, StringFormat='{0:dddd MMMM d, yyyy}'}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+                <CollectionView.GroupFooterTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal"
+                                     Padding="0,0,10,0"
+                                     HorizontalOptions="FillAndExpand">
+                            <Label Text="Balance"
+                                   HorizontalOptions="EndAndExpand" />
+                            <Label Text="{Binding DayBalanceFormatted}"
+                                   HorizontalOptions="End" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.GroupFooterTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="this"
+             VerticalOptions="FillAndExpand"
+             x:Class="XamarinFormsBug.Controls.SampleCell.SampleCell">
+    <ContentView.Content>
+        <Grid x:Name="SpendingEventWrapper"
+              BindingContext="{x:Reference this}"
+              VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"  />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="60*" />
+                <ColumnDefinition Width="30*" />
+            </Grid.ColumnDefinitions>
+            <AbsoluteLayout Grid.Column="0"
+                            Grid.Row="0"
+                            VerticalOptions="FillAndExpand">
+                <Ellipse Fill="#ccceee"
+                         WidthRequest="35"
+                         HeightRequest="35"
+                         Margin="5,0,0,0"
+                         StrokeThickness="0"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+                         AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" />
+                <Label AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                       Margin="5,-2,0,0"
+                       Text="{Binding InputCell.UserInitials}"
+                       TextColor="#0D495A" />
+            </AbsoluteLayout>
+            <StackLayout Grid.Column="1"
+                         Grid.Row="0"
+                         Orientation="Vertical"
+                         VerticalOptions="FillAndExpand">
+                <Label Text="{Binding InputCell.Title}" 
+                       FontSize="15"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="StartAndExpand"
+                       TextColor="#24838E" />
+                <Label Text="{Binding InputCell.Category}"
+                       FontSize="12"
+                       Margin="0,-4,0,0"
+                       BackgroundColor="#C59B59"
+                       Padding="4,2,4,2"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="StartAndExpand"
+                       TextColor="White" />
+                <Label x:Name="CommentLabel"
+                       Text="{Binding InputCell.Comment}"
+                       FontSize="12"
+                       Margin="0,-4,0,0"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="StartAndExpand"
+                       TextColor="#959595" />
+            </StackLayout>
+            <StackLayout Grid.Column="2"
+                         Grid.Row="0"
+                         Orientation="Vertical"
+                         VerticalOptions="FillAndExpand">
+                <Label Text="{Binding InputCell.Amount, StringFormat='{0:F2}'}"
+                       Margin="0,5,10,0"
+                       TextColor="#2F2F2F"
+                       HorizontalOptions="EndAndExpand" />
+                <Label Text="{Binding InputCell.Currency}"
+                       Margin="0,-5,10,0"
+                       FontSize="11"
+                       FontAttributes="Italic"
+                       TextColor="#ADADAD"
+                       HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+            <BoxView Grid.ColumnSpan="3"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     HeightRequest=".5"
+                     BackgroundColor="#BABABA"  />
+        </Grid>
+    </ContentView.Content>
+</ContentView>
